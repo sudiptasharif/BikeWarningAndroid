@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Bike Signal Warning</string>
+    <string name="button_label_settings">Settings</string>
+    <string name="button_label_save">Save</string>
+    <string name="button_label_stop_listening">Stop Listening</string>
+    <string name="button_label_got_to_warnings">Got To Warnings</string>
+    <string name="button_label_start_listening">Start Listening</string>
+</resources>
