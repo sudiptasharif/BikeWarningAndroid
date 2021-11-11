@@ -26,12 +26,11 @@ public class BikeWarningServer implements Runnable{
             Log.d(TAG, "run: input = connected to a client");
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            out.println(System.currentTimeMillis());
-//            String input;
-//            while ((input = in.readLine()) != null) {
-//                //out.println(bikeProtocol.processSignal(input));
-//
-//            }
+            String input;
+            while ((input = in.readLine()) != null) {
+                out.println(bikeProtocol.processSignal(input));
+
+            }
         } catch (IOException e) {
             Log.d(TAG, "run: IOException = " + e.getMessage());
         }
