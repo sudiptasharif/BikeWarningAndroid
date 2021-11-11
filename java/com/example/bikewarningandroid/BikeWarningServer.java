@@ -21,15 +21,17 @@ public class BikeWarningServer implements Runnable{
             Log.d(TAG, "run: Running thread.");
             serverSocket = new ServerSocket(AppUtils.PORT_NUMBER);
             bikeProtocol = new BikeProtocol();
-            Log.d(TAG, "run: input = No input received --> Before accept()");
+            Log.d(TAG, "run: waiting to connect to a client");
             clientSocket = serverSocket.accept();
+            Log.d(TAG, "run: input = connected to a client");
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            String input;
-            Log.d(TAG, "run: input = No input received --> After accept()");
-            while ((input = in.readLine()) != null) {
-                out.println(bikeProtocol.processSignal(input));
-            }
+            out.println(System.currentTimeMillis());
+//            String input;
+//            while ((input = in.readLine()) != null) {
+//                //out.println(bikeProtocol.processSignal(input));
+//
+//            }
         } catch (IOException e) {
             Log.d(TAG, "run: IOException = " + e.getMessage());
         }
