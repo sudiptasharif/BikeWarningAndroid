@@ -14,14 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BikeWarningAndroid">
         <activity android:name=".WarningsActivity"
-            android:label="Warnings" />
+            android:label="Warnings"
+            android:exported="true"/>
         <activity android:name=".SettingsActivity"
             android:label="Settings"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:exported="true">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.bikewarningandroid.MainActivity"/>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
