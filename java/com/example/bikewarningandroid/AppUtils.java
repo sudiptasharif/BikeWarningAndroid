@@ -13,6 +13,10 @@ import java.nio.ByteOrder;
 public class AppUtils {
     private static final String TAG = AppUtils.class.getSimpleName();
     public static final int PORT_NUMBER = 6000;
+    public static final int ON = 1;
+    public static final int OFF = 0;
+    public static final String STOP_LISTENING = "Stop Listening";
+    public static final String START_LISTENING = "Start Listening";
 
     public static String getIP(Context context) {
         String ip = "";
