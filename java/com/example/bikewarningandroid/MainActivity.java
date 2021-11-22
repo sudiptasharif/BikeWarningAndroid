@@ -1,16 +1,17 @@
 package com.example.bikewarningandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
-import android.content.Context;
-import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
+import pl.droidsonroids.gif.GifImageView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private BikeWarningServer bikeWarningServer;
     public static volatile int switchState;
     private Button btnServerStart;
+    private GifImageView gifImageViewWarning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: Port Number = " + AppUtils.PORT_NUMBER);
         switchState = AppUtils.ON;
         btnServerStart = findViewById(R.id.button_start_server);
-        bikeWarningServer = new BikeWarningServer(btnServerStart);
+        gifImageViewWarning = findViewById(R.id.gif_image_view_warning);
+        bikeWarningServer = new BikeWarningServer(this, btnServerStart, gifImageViewWarning);
         bikeWarningServer.setLooper(Looper.getMainLooper());
     }
 
