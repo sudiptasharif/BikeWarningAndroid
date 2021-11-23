@@ -28,7 +28,7 @@ public class WarningsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_warnings);
-        bikeWarningServer = new BikeWarningServer();
+        //bikeWarningServer = new BikeWarningServer();
     }
 
     public void startListening(View view) {
@@ -71,9 +71,9 @@ public class WarningsActivity extends AppCompatActivity {
 //        mainHandler.post(myRunnable);
     }
 
-    public void stopListening(View view) {
-        if (bikeWarningServer != null) {
-            bikeWarningServer.stopListening();
-        }
-    }
+//    public void stopListening(View view) {
+//        if (bikeWarningServer != null) {
+//            bikeWarningServer.stopListening();
+//        }
+//    }
 }
