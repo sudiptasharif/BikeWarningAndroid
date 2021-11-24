@@ -21,6 +21,8 @@ public class AppUtils {
     public static final int ORANGE_CIRCLE_TONE = 3;
     public static final int ORANGE_CIRCLE_SPEECH = 4;
     public static final int WARNING_SIGNAL_DURATION = 4000;
+    public static final int SERVER_ON = 0;
+    public static final int SERVER_OFF = 1;
 
 
     public static String getIP(Context context) {
