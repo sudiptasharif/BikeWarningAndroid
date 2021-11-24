@@ -43,7 +43,7 @@ public class BikeWarningServer implements Runnable{
         {
             if(!Thread.interrupted()) {
                 Log.d(TAG, "run: accepted client connection request");
-                out.println(AppUtils.SERVER_ON);
+                out.println(AppUtils.SERVER_ON_STATE);
                 Log.d(TAG, "run: sent SERVER_ON state");
                 Log.d(TAG, "run: ready to accept warning signal codes");
                 String input;
@@ -54,7 +54,7 @@ public class BikeWarningServer implements Runnable{
                 updateServerStartButton();
             } else {
                 Log.d(TAG, "run: Thread Interrupted");
-                out.println(AppUtils.SERVER_OFF);
+                out.println(AppUtils.SERVER_OFF_STATE);
                 Log.d(TAG, "run: sent SERVER_OFF state.");
                 Log.d(TAG, "run: can't accept client connection request");
                 Log.d(TAG, "run: restart server to accept any client connection request");
