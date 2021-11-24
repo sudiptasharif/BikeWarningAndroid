@@ -23,6 +23,7 @@ public class AppUtils {
     public static final int WARNING_SIGNAL_DURATION = 4000;
     public static final int SERVER_ON_STATE = 0;
     public static final int SERVER_OFF_STATE = 1;
+    public static final int INVALID_SIGNAL_CODE = -1;
 
 
     public static String getIP(Context context) {
