@@ -82,28 +82,28 @@ public class BikeWarningServer implements Runnable{
     }
 
     private String processSignal(int signalCode) {
-        String t3Str;
+        String response;
         if(signalCode == AppUtils.RED_CIRCLE_TONE) {
-            t3Str = Long.toString(startWarning(R.drawable.red_circle, R.raw.tone));
+            response = Long.toString(startWarning(R.drawable.red_circle, R.raw.tone));
             SystemClock.sleep(AppUtils.WARNING_SIGNAL_DURATION);
             stopWarning();
         } else if(signalCode == AppUtils.RED_CIRCLE_SPEECH) {
-            t3Str = Long.toString(startWarning(R.drawable.red_circle, R.raw.speech));
+            response = Long.toString(startWarning(R.drawable.red_circle, R.raw.speech));
             SystemClock.sleep(AppUtils.WARNING_SIGNAL_DURATION);
             stopWarning();
         } else if(signalCode == AppUtils.ORANGE_CIRCLE_TONE) {
-            t3Str = Long.toString(startWarning(R.drawable.orange_circle, R.raw.tone));
+            response = Long.toString(startWarning(R.drawable.orange_circle, R.raw.tone));
             SystemClock.sleep(AppUtils.WARNING_SIGNAL_DURATION);
             stopWarning();
         } else if (signalCode == AppUtils.ORANGE_CIRCLE_SPEECH) {
-            t3Str = Long.toString(startWarning(R.drawable.orange_circle, R.raw.speech));
+            response = Long.toString(startWarning(R.drawable.orange_circle, R.raw.speech));
             SystemClock.sleep(AppUtils.WARNING_SIGNAL_DURATION);
             stopWarning();
         } else {
-            t3Str = Integer.toString(AppUtils.INVALID_SIGNAL_CODE);
+            response = Integer.toString(AppUtils.INVALID_SIGNAL_CODE);
             Log.d(TAG, "processSignal: warning code not supported yet");
         }
-        return t3Str;
+        return response;
     }
 
     private long startWarning(int gifResId, int mediaResId) {
