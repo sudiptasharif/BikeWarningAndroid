@@ -18,8 +18,8 @@ public class AppUtils {
     public static final String START_LISTENING = "Start Listening";
     public static final int RED_CIRCLE_TONE = 1;
     public static final int RED_CIRCLE_SPEECH = 2;
-    public static final int ORANGE_CIRCLE_TONE = 3;
-    public static final int ORANGE_CIRCLE_SPEECH = 4;
+    public static final int YELLOW_CIRCLE_TONE = 3;
+    public static final int YELLOW_CIRCLE_SPEECH = 4;
     public static final int WARNING_SIGNAL_DURATION = 4000;
     public static final int SERVER_ON_STATE = 0;
     public static final int SERVER_OFF_STATE = 1;

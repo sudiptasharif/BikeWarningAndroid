@@ -91,12 +91,12 @@ public class BikeWarningServer implements Runnable{
             response = Long.toString(startWarning(R.drawable.red_circle, R.raw.speech));
             SystemClock.sleep(AppUtils.WARNING_SIGNAL_DURATION);
             stopWarning();
-        } else if(signalCode == AppUtils.ORANGE_CIRCLE_TONE) {
-            response = Long.toString(startWarning(R.drawable.orange_circle, R.raw.tone));
+        } else if(signalCode == AppUtils.YELLOW_CIRCLE_TONE) {
+            response = Long.toString(startWarning(R.drawable.yellow_circle, R.raw.tone));
             SystemClock.sleep(AppUtils.WARNING_SIGNAL_DURATION);
             stopWarning();
-        } else if (signalCode == AppUtils.ORANGE_CIRCLE_SPEECH) {
-            response = Long.toString(startWarning(R.drawable.orange_circle, R.raw.speech));
+        } else if (signalCode == AppUtils.YELLOW_CIRCLE_SPEECH) {
+            response = Long.toString(startWarning(R.drawable.yellow_circle, R.raw.speech));
             SystemClock.sleep(AppUtils.WARNING_SIGNAL_DURATION);
             stopWarning();
         } else {
