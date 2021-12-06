@@ -25,7 +25,7 @@ public class BikeWarningServer implements Runnable{
     private Button btnStartServer;
     private GifImageView gifImageViewWarning;
     private Context mainActivityContext;
-    private MediaPlayer player;
+    private MediaPlayenr player;
 
     public BikeWarningServer(Context context,Button button, GifImageView gif) {
         mainActivityContext = context;
