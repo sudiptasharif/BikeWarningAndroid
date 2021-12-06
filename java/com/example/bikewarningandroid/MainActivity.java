@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         gifImageViewWarning = findViewById(R.id.gif_image_view_warning);
         bikeWarningServer = new BikeWarningServer(this, btnServerStart, gifImageViewWarning);
         bikeWarningServer.setLooper(Looper.getMainLooper());
+        logServerThreadState();
     }
 
     public void startServer(View view) {
@@ -46,6 +47,73 @@ public class MainActivity extends AppCompatActivity {
             btnServerStart.setText(getString(R.string.button_label_start_listening));
             switchState = AppUtils.ON;
         }
+        logServerThreadState();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: invoked");
+        logServerThreadState();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: invoked");
+        logServerThreadState();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart: invoked");
+        logServerThreadState();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: invoked");
+        logServerThreadState();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: invoked");
+        logServerThreadState();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: invoked");
+        if(serverThread != null && serverThread.isAlive()) {
+            Log.d(TAG, "onDestroy: interrupting thread");
+            serverThread.interrupt();
+            switchState = AppUtils.ON;
+        }
+        logServerThreadState();
+    }
+    
+    private void logServerThreadState() {
+        if(serverThread == null) {
+            Log.d(TAG, "logServerThreadState: serverThread = null");
+        }else {
+            Log.d(TAG, "logServerThreadState: serverThread != null");
+            if(serverThread.isAlive()) {
+                Log.d(TAG, "logServerThreadState: serverThread = alive");
+            }else {
+                Log.d(TAG, "logServerThreadState: serverThread != alive");
+            }
+
+            if(serverThread.isInterrupted()) {
+                Log.d(TAG, "logServerThreadState: serverThread = interrupted");
+            } else {
+                Log.d(TAG, "logServerThreadState: serverThread != interrupted");
+            }
+
+        }
+    }
 }
