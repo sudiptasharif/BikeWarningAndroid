@@ -84,19 +84,19 @@ public class BikeWarningServer implements Runnable{
     private String processSignal(int signalCode) {
         String response;
         if(signalCode == AppUtils.RED_CIRCLE_TONE) {
-            response = Long.toString(startWarning(R.drawable.red_circle, R.raw.tone));
+            response = Long.toString(startWarning(R.drawable.giphy_red, R.raw.tone));
             SystemClock.sleep(AppUtils.WARNING_SIGNAL_DURATION);
             stopWarning();
         } else if(signalCode == AppUtils.RED_CIRCLE_SPEECH) {
-            response = Long.toString(startWarning(R.drawable.red_circle, R.raw.speech));
+            response = Long.toString(startWarning(R.drawable.giphy_red, R.raw.speech));
             SystemClock.sleep(AppUtils.WARNING_SIGNAL_DURATION);
             stopWarning();
         } else if(signalCode == AppUtils.YELLOW_CIRCLE_TONE) {
-            response = Long.toString(startWarning(R.drawable.yellow_circle, R.raw.tone));
+            response = Long.toString(startWarning(R.drawable.giphy_yellow, R.raw.tone));
             SystemClock.sleep(AppUtils.WARNING_SIGNAL_DURATION);
             stopWarning();
         } else if (signalCode == AppUtils.YELLOW_CIRCLE_SPEECH) {
-            response = Long.toString(startWarning(R.drawable.yellow_circle, R.raw.speech));
+            response = Long.toString(startWarning(R.drawable.giphy_yellow, R.raw.speech));
             SystemClock.sleep(AppUtils.WARNING_SIGNAL_DURATION);
             stopWarning();
         } else {
