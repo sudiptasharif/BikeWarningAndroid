@@ -35,29 +35,29 @@ public class BikeWarningServer implements Runnable{
     }
 
     public void run() {
-        Log.d(TAG, "run: starting server thread");
+        //Log.d(TAG, "run: starting server thread");
         try (ServerSocket serverSocket = new ServerSocket(AppUtils.PORT_NUMBER);
              Socket clientSocket = serverSocket.accept();
              PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));)
+             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())))
         {
             if(!Thread.interrupted()) {
-                Log.d(TAG, "run: accepted client connection request");
-                out.println(AppUtils.SERVER_ON_STATE);
-                Log.d(TAG, "run: sent SERVER_ON state");
-                Log.d(TAG, "run: ready to accept warning signal codes");
+                //Log.d(TAG, "run: accepted client connection request");
+                out.println(AppUtils.APP_LISTENING);
+                //Log.d(TAG, "run: sent APP_LISTENING state");
+                //Log.d(TAG, "run: ready to accept warning signal codes");
                 String input;
                 while ((input = in.readLine()) != null) {
-                    Log.d(TAG, "run: signal code = " + input);
+                    //Log.d(TAG, "run: signal code = " + input);
                     out.println(processSignal(Integer.parseInt(input)));
                 }
                 updateServerStartButton();
             } else {
-                Log.d(TAG, "run: Thread Interrupted");
-                out.println(AppUtils.SERVER_OFF_STATE);
-                Log.d(TAG, "run: sent SERVER_OFF state.");
-                Log.d(TAG, "run: can't accept client connection request");
-                Log.d(TAG, "run: restart server to accept any client connection request");
+                //Log.d(TAG, "run: Thread Interrupted");
+                out.println(AppUtils.APP_NOT_LISTENING);
+                //Log.d(TAG, "run: sent APP_NOT_LISTENING state.");
+                //Log.d(TAG, "run: can't accept client connection request");
+                //Log.d(TAG, "run: restart server to accept any client connection request");
                 in.close();
                 out.close();
                 clientSocket.close();
@@ -73,7 +73,7 @@ public class BikeWarningServer implements Runnable{
     }
 
     private void updateServerStartButton() {
-        Log.d(TAG, "run: updating server button");
+        //Log.d(TAG, "run: updating server button");
         Handler handler = new Handler(mainActivityLooper);
         handler.post(() -> {
             MainActivity.switchState = AppUtils.ON;
@@ -100,14 +100,14 @@ public class BikeWarningServer implements Runnable{
             SystemClock.sleep(AppUtils.WARNING_SIGNAL_DURATION);
             stopWarning();
         } else {
-            response = Integer.toString(AppUtils.INVALID_SIGNAL_CODE);
-            Log.d(TAG, "processSignal: warning code not supported yet");
+            response = Integer.toString(AppUtils.INVALID_WARNING_CODE);
+            //Log.d(TAG, "processSignal: warning code not supported yet");
         }
         return response;
     }
 
     private long startWarning(int gifResId, int mediaResId) {
-        Log.d(TAG, "startWarning: gifResId = " + gifResId + ", mediaResId = " + mediaResId);
+        //Log.d(TAG, "startWarning: gifResId = " + gifResId + ", mediaResId = " + mediaResId);
         Handler handler = new Handler(mainActivityLooper);
         handler.post(() -> {
             btnStartServer.setVisibility(View.INVISIBLE);
@@ -122,7 +122,7 @@ public class BikeWarningServer implements Runnable{
     }
 
     private void stopWarning() {
-        Log.d(TAG, "stopWarning: stop warning");
+        //Log.d(TAG, "stopWarning: stop warning");
         Handler handler = new Handler(mainActivityLooper);
         handler.post(() -> {
             gifImageViewWarning.setImageResource(R.drawable.no_warning);
