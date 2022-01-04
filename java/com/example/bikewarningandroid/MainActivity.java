@@ -25,11 +25,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Log.d(TAG, "onCreate: Port Number = " + AppUtils.PORT_NUMBER);
         switchState = AppUtils.ON;
         btnServerStart = findViewById(R.id.button_start_server);
         gifImageViewWarning = findViewById(R.id.gif_image_view_warning);
         bikeWarningServer = new BikeWarningServer(this, btnServerStart, gifImageViewWarning);
         bikeWarningServer.setLooper(Looper.getMainLooper());
+        //logServerThreadState();
     }
 
     public void startServer(View view) {
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             btnServerStart.setText(getString(R.string.button_label_start_listening));
             switchState = AppUtils.ON;
         }
+        //logServerThreadState();
     }
 
 //    @Override
@@ -85,13 +88,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        //Log.d(TAG, "onDestroy: invoked");
         if(serverThread != null && serverThread.isAlive()) {
             Log.d(TAG, "onDestroy: interrupting thread");
             serverThread.interrupt();
             switchState = AppUtils.ON;
         }
+        //logServerThreadState();
     }
-    
+
 //    private void logServerThreadState() {
 //        if(serverThread == null) {
 //            Log.d(TAG, "logServerThreadState: serverThread = null");
